@@ -1,0 +1,69 @@
+<div style="top :10%">
+<div class="container">
+  <div class=" row">
+      <div class="col-md-6">
+          <div class="card ">
+              <div class="text-center">
+                  <h1>Loan application</h1>
+                  <br>
+              </div>
+              <form>
+                  <form [formGroup]="createLoan" (ngSubmit)="createLoans()">
+                      <div class="mb-3">
+                          <div class= "LoanAmount">
+                          <label style="flex: 100px;" for="loanAmount"  class="form-label">Loan Amount</label>
+                          
+                          <input required pattern="[0-9]"  min="1000" oninvalid="alert('Minimum amount is 1000')" formControlName="loanAmount" placeholder="enter the amount" type="number" class="form-control" id="loanAmount" required >
+                          <p *ngIf="createLoan.invalid && createLoan.touched" style="color:red">Minimum amount 1000 </p>
+  
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                          <div class= "StartDate">
+                          <label for="loanStartDate"  class="form-label">Loan Start Date</label>
+                          <input formControlName="loanStartDate" type="date" class="form-control" id="loanStartDate" required >
+                          </div>
+                      </div>
+                      <div class="mb-3">
+                          <label for="totalMonth" class="form-label">Term of loan in Months </label>
+                          <select class="form-select" formControlName="totalMonth" aria-label="Default select example" id="totalMonth">
+                              <option value=12 selected> 12 Months </option>
+                              <option value=24> 24 Months </option>
+                              <option value=36> 36 Months </option>
+                              <option value=48> 48 Months </option>
+                            </select>
+                      </div>
+                      <div class="mb-3">
+                          <label for="paymentFrequency" class="form-label">Payment Frequency</label>
+                          <select class="form-select" formControlName="paymentFrequency" aria-label="Default select example" id="paymentFrequency">
+                              <option value=1 selected> Monthly </option>
+                              <option value=3> Quarterly </option>
+                              <option value=6> Semi-Annually </option>
+                              <option value=12> Annually </option>
+                            </select>
+                      </div>
+                      <div class="mb-3">
+                          <div class= "InterestRate">
+                          <label style="flex: 100px;" for="interestRate"  class="form-label">Interest</label>
+                          <input formControlName="interestRate" pattern="[0-9]" min="1" oninput="validity.valid||(value='');" placeholder="enter the amount" type="number" class="form-control" id="interestRate" required >
+                          </div>
+                      </div>
+                     
+                      <div class="mb-3">
+                          <label for="payment" class="form-label">Payment Frequency</label>
+                          <select class="form-select" formControlName="payment" aria-label="Default select example" id="payment">
+                            <option value="EvenPrincipal" selected >Even Principal</option>  
+                            <option value="InterestOnly">Interest Only</option>
+                              
+                            </select>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Create</button>
+                          <button class="btn btn-primary" style="margin-left: 20px;" routerLink="/home">Back</button>
+                  </form>
+              </form>
+          </div>
+      </div>
+  </div>
+
+</div>
+</div>
